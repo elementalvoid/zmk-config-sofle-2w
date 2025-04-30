@@ -61,12 +61,12 @@
         // ref: https://github.com/zmkfirmware/zmk/pull/2477
         // ref: https://github.com/zmkfirmware/zmk/issues/72#issuecomment-2081690485
         // and: https://github.com/zmkfirmware/zmk/pull/2027#issuecomment-2130938216
-        scroll_up_down: behavior_sensor_rotate_mouse_wheel_up_down {
-            compatible = "zmk,behavior-sensor-rotate";
-            #sensor-binding-cells = <0>;
-            tap-ms = <20>;
-            bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
-        };
+        //scroll_up_down: behavior_sensor_rotate_mouse_wheel_up_down {
+        //    compatible = "zmk,behavior-sensor-rotate";
+        //    #sensor-binding-cells = <0>;
+        //    tap-ms = <20>;
+        //    bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
+        //};
 
       sk_meh: sticky_meh {
         compatible = "zmk,behavior-sticky-key";
@@ -120,7 +120,7 @@
                               &kp LGUI      &kp LALT      &kp LCTRL     &mo LOWER     &kp RET      &kp SPACE     &mo RAISE    &kp RCTRL     &kp RALT      &kp RGUI
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &scroll_up_down>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &msc SCRL_UP SCRL_DOWN>;
         };
 
         lower_layer {
@@ -152,7 +152,7 @@
                                             &trans        &trans        &trans        &trans        MEH           MEH           &trans        &trans        &trans        &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &scroll_up_down>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &msc SCRL_UP SCRL_DOWN>;
         };
 
         raise_layer {
@@ -184,7 +184,7 @@
                                             &trans        &trans        &trans        &trans       MEH           MEH           &trans        &trans        &trans        &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN&scroll_up_down>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &msc SCRL_UP SCRL_DOWN>;
         };
 
         adjust_layer {
@@ -216,7 +216,7 @@
                             &none &none &none &none &none     &none &none &none &none &none
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN&scroll_up_down>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &msc SCRL_UP SCRL_DOWN>;
         };
     };
 };
