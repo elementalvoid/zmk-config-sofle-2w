@@ -27,6 +27,7 @@
 // You will need to re-pair to your devices.
 // https://zmk.dev/docs/features/bluetooth#refreshing-the-hid-descriptor
 #include <dt-bindings/zmk/pointing.h>
+#include <behaviors/mouse_keys.dtsi>
 
 #define BASE 0
 #define LOWER 1
@@ -52,22 +53,9 @@
     sensors {
         compatible = "zmk,keymap-sensors";
         sensors = <&left_encoder &right_encoder>;
-        //triggers-per-rotation = <30>; // default is 20
     };
 
     behaviors {
-        // mouse scroll behavior
-        // If needed, adjust the value of tap-ms
-        // ref: https://github.com/zmkfirmware/zmk/pull/2477
-        // ref: https://github.com/zmkfirmware/zmk/issues/72#issuecomment-2081690485
-        // and: https://github.com/zmkfirmware/zmk/pull/2027#issuecomment-2130938216
-        //scroll_up_down: behavior_sensor_rotate_mouse_wheel_up_down {
-        //    compatible = "zmk,behavior-sensor-rotate";
-        //    #sensor-binding-cells = <0>;
-        //    tap-ms = <20>;
-        //    bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
-        //};
-
       sk_meh: sticky_meh {
         compatible = "zmk,behavior-sticky-key";
         #binding-cells = <1>;
@@ -77,15 +65,6 @@
         lazy;
         ignore-modifiers;
       };
-    };
-
-   // Activate ADJUST layer by pressing raise and lower
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        adjust_layer {
-            if-layers = <LOWER RAISE>;
-            then-layer = <ADJUST>;
-        };
     };
 
     keymap {
@@ -182,38 +161,6 @@
                 &trans        &trans        &trans        &trans        &trans        &kp CLCK                                 &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &trans        &trans
                 &trans        &trans        &trans        &trans        &trans        &trans       &trans        &trans        &trans        &trans        &trans        &trans        &trans        &trans
                                             &trans        &trans        &trans        &trans       MEH           MEH           &trans        &trans        &trans        &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &msc SCRL_UP SCRL_DOWN>;
-        };
-
-        adjust_layer {
-            // I don't use it.
-            display-name = "adjust";
-
-            /*
-            *
-            *   ,-----------------------------------------.                 ,-----------------------------------------.
-            *   |      |      |      |      |      |      |                 |      |      |      |      |      |      |
-            *   +------+------+------+------+------|------.                 .------+------+------+------+------+------+
-            *   |      |      |      |      |      |      |                 |      |      |      |      |      |      |
-            *   +------+------+------+------+------|------+                 .------+------+------+------+------+------+
-            *   |      |      |      |      |      |      |                 |      |      |      |      |      |      |
-            *   +------+------+------+------+------+------+------.   .------+------+------+------+------+------+------+
-            *   |      |      |      |      |      |      |      |   |      |      |      |      |      |      |      |
-            *   `------+------+------+------+------+------+------+   +------+------+------+------+------+------+------'
-            *                 |      |      |      |      |      |   |      |      |      |      |      |
-            *                 `------+------+------+------+------'   '------+------+------+------+------'
-            *
-            *   Encoder Left:    VOL DOWN <-> VOL UP
-            *   Encoder Right: SROLL DOWN <-> SROLL UP
-            */
-            bindings = <
-                &none &none &none &none &none &none                 &none &none &none &none &none &none
-                &none &none &none &none &none &none                 &none &none &none &none &none &none
-                &none &none &none &none &none &none                 &none &none &none &none &none &none
-                &none &none &none &none &none &none                 &none &none &none &none &none &none
-                            &none &none &none &none &none     &none &none &none &none &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &msc SCRL_UP SCRL_DOWN>;
