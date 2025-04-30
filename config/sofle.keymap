@@ -27,14 +27,14 @@
 // You will need to re-pair to your devices.
 // https://zmk.dev/docs/features/bluetooth#refreshing-the-hid-descriptor
 #include <dt-bindings/zmk/pointing.h>
+#include <behaviors/mouse_keys.dtsi>
 
 #define BASE 0
 #define LOWER 1
 #define RAISE 2
-#define ADJUST 3
 
 // MEH is sticky
-#define MEH &sk_meh LC(LA(LMETA))
+#define MEH &lk LC(LA(LMETA))
 
 / {
 
@@ -55,7 +55,7 @@
     };
 
     behaviors {
-      sk_meh: sticky_meh {
+      lk: lazy_key {
         compatible = "zmk,behavior-sticky-key";
         #binding-cells = <1>;
         bindings = <&kp>;
@@ -98,7 +98,8 @@
                               &kp LGUI      &kp LALT      &kp LCTRL     &mo LOWER     &kp RET      &kp SPACE     &mo RAISE    &kp RCTRL     &kp RALT      &kp RGUI
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &msc SCRL_UP SCRL_DOWN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            //sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &msc SCRL_UP SCRL_DOWN>;
         };
 
         lower_layer {
@@ -130,7 +131,8 @@
                                             &trans        &trans        &trans        &trans        MEH           MEH           &trans        &trans        &trans        &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &msc SCRL_UP SCRL_DOWN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            //sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &msc SCRL_UP SCRL_DOWN>;
         };
 
         raise_layer {
@@ -162,7 +164,8 @@
                                             &trans        &trans        &trans        &trans       MEH           MEH           &trans        &trans        &trans        &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &msc SCRL_UP SCRL_DOWN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            //sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &msc SCRL_UP SCRL_DOWN>;
         };
     };
 };
