@@ -27,7 +27,6 @@
 // You will need to re-pair to your devices.
 // https://zmk.dev/docs/features/bluetooth#refreshing-the-hid-descriptor
 #include <dt-bindings/zmk/pointing.h>
-#include <behaviors/mouse_keys.dtsi>
 
 #define BASE 0
 #define LOWER 1
