@@ -65,6 +65,12 @@
         lazy;
         ignore-modifiers;
       };
+
+      encoder_scroll: encoder_scroll {
+        compatible = "zmk,behavior-sensor-rotate";
+        #sensor-binding-cells = <0>;
+        bindings = <&msc MOVE_DOWN>, <&msc MOVE_UP>;
+      };
     };
 
     keymap {
@@ -99,7 +105,7 @@
                               &kp LGUI      &kp LALT      &kp LCTRL     &mo LOWER     &kp RET      &kp SPACE     &mo RAISE    &kp RCTRL     &kp RALT      &kp RGUI
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &msc SCRL_UP SCRL_DOWN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &encoder_scroll>;
         };
 
         lower_layer {
@@ -131,7 +137,7 @@
                                             &trans        &trans        &trans        &trans        MEH           MEH           &trans        &trans        &trans        &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &msc SCRL_UP SCRL_DOWN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &encoder_scroll>;
         };
 
         raise_layer {
@@ -163,7 +169,7 @@
                                             &trans        &trans        &trans        &trans       MEH           MEH           &trans        &trans        &trans        &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &msc SCRL_UP SCRL_DOWN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &encoder_scroll>;
         };
     };
 };
