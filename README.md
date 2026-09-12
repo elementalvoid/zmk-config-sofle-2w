@@ -62,10 +62,16 @@ What changed and why:
   so the board is `nice_nano` (revision 2.0.0 by default) and **must** be given
   the `//zmk` variant qualifier: `nice_nano//zmk`.
 
-  This is not cosmetic. With the bare `nice_nano` ID, Zephyr silently skips
-  board-specific shield overlays — including the `nice_view_adapter`'s, which is
-  what defines the `&nice_view_spi` bus. The build then fails with
-  `undefined node label 'nice_view_spi'`.
+  This is not cosmetic, and it is not optional. The qualifier appears in
+  `build.yaml`. Without it:
+
+  1. Zephyr silently skips board-specific shield overlays — including the
+     `nice_view_adapter`'s, which is what defines the `&nice_view_spi` bus.
+     The build then fails with `undefined node label 'nice_view_spi'`.
+  2. Even when a build succeeds (e.g. `settings_reset`), ZMK's CI rejects it
+     with `Missing ZMK Compat: The selected board is not set up for ZMK and
+     there is a ZMK variant available`, because `CONFIG_ZMK_BOARD_COMPAT` is
+     only set by the ZMK variant.
 
 - **Encoders:** `CONFIG_EC11` is now auto-selected from the devicetree
   (`DT_HAS_ALPS_EC11_ENABLED`) and does **not** need to be set. However
