@@ -5,27 +5,27 @@
 # pass flags to the build command and `artifact-name` to assign a name to
 # distinguish build outputs from each other:
 #
-# board: [ "nice_nano_v2" ]
+# board: [ "nice_nano" ]
 # shield: [ "corne_left", "corne_right" ]
 # include:
 #   - board: bdn9_rev2
-#   - board: nice_nano_v2
+#   - board: nice_nano
 #     shield: reviung41
-#   - board: nice_nano_v2
+#   - board: nice_nano
 #     shield: corne_left
 #     cmake-args: -DCONFIG_ZMK_USB_LOGGING=y
 #     artifact-name: corne_left_with_logging
 #
 ---
 include:
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: sofle_left nice_view_adapter nice_view_custom
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: sofle_right nice_view_adapter nice_view_custom
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: sofle_left nice_view_adapter nice_view_custom
     snippet: zmk-usb-logging
     artifact-name: sofle_left_with_logging
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: settings_reset
     artifact-name: nano_v2_settings_reset
