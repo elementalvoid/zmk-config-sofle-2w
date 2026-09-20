@@ -7,6 +7,16 @@ manifest:
     # Additional modules containing boards/shields/custom code can be listed here as well
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
+    # We intentionally track ZMK main so we pick up new features early.
+    #
+    # NOTE: As of 2025-12-09 ZMK main moved to Zephyr 4.1, a large breaking
+    # change (HWMv2, board revisions/variants, LVGL v9, removed CONFIG_EC11).
+    # This config was migrated to match; see README.md for details.
+    #
+    # If a future break lands and you need a known-good build, pin this to a
+    # ZMK release tag instead (e.g. 'v0.4', the first release on Zephyr 4.1):
+    #   revision: v0.4
+    # Remember to update .github/workflows/build.yml in lockstep.
     - name: zmk
       remote: zmkfirmware
       revision: main

@@ -18,10 +18,11 @@
   cs-gpios = <&pro_micro 0 GPIO_ACTIVE_HIGH>;
 };
 
-// If needed, adjust the value of ZMK_MOUSE_DEFAULT_SCRL_VAL, must be done before including mouse.h
+// If needed, adjust the scroll step, must be done before including pointing.h
+// (ZMK_MOUSE_DEFAULT_SCRL_VAL was renamed to ZMK_POINTING_DEFAULT_SCRL_VAL)
 // ref: https://github.com/zmkfirmware/zmk/issues/72#issuecomment-2081690485
 // and: https://github.com/zmkfirmware/zmk/pull/2027#issuecomment-2130938216
-//#define ZMK_MOUSE_DEFAULT_SCRL_VAL 600 // default is 10
+//#define ZMK_POINTING_DEFAULT_SCRL_VAL 600 // default is 10
 
 // NOTE: Adding or removing mouse support requires updating the HID Descriptor.
 // You will need to re-pair to your devices.
@@ -105,7 +106,7 @@
                               &kp LGUI      &kp LALT      &kp LCTRL     &mo LOWER     &kp RET      &kp SPACE     &mo RAISE    &kp RCTRL     &kp RALT      &kp RGUI
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &encoder_scroll>;
+            sensor-bindings = <&inc_dec_cp C_VOL_UP C_VOL_DN &encoder_scroll>;
         };
 
         lower_layer {
@@ -137,7 +138,7 @@
                                             &trans        &trans        &trans        &trans        MEH           MEH           &trans        &trans        &trans        &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &encoder_scroll>;
+            sensor-bindings = <&inc_dec_cp C_VOL_UP C_VOL_DN &encoder_scroll>;
         };
 
         raise_layer {
@@ -169,7 +170,7 @@
                                             &trans        &trans        &trans        &trans       MEH           MEH           &trans        &trans        &trans        &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &encoder_scroll>;
+            sensor-bindings = <&inc_dec_cp C_VOL_UP C_VOL_DN &encoder_scroll>;
         };
     };
 };
